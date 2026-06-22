@@ -1,0 +1,263 @@
+:root {
+  --paper: #f6f3ea;
+  --paper-raised: #fffdf7;
+  --ink: #1f2b22;
+  --ink-soft: #5c6a5e;
+  --bill-green: #1f5c3f;
+  --bill-green-bright: #2f8a5b;
+  --line: #d8d2c0;
+  --error: #a3402f;
+
+  --font-display: "Space Grotesk", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", "SFMono-Regular", monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+}
+
+body {
+  background-image: radial-gradient(
+    circle at 1px 1px,
+    rgba(31, 43, 34, 0.06) 1px,
+    transparent 0
+  );
+  background-size: 22px 22px;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+.page {
+  width: 100%;
+  max-width: 880px;
+  padding: 48px 24px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* ---- Masthead ---- */
+
+.masthead {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  border-bottom: 2px solid var(--ink);
+  padding-bottom: 18px;
+}
+
+.masthead__mark {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  color: var(--bill-green);
+  text-transform: uppercase;
+}
+
+.masthead__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.masthead__subtitle {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  margin: 0;
+}
+
+/* ---- Receipt layout ---- */
+
+.receipt {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  background: var(--paper-raised);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  box-shadow: 0 1px 0 rgba(31, 43, 34, 0.04), 0 12px 28px -18px rgba(31, 43, 34, 0.35);
+  overflow: hidden;
+}
+
+.receipt__panel {
+  padding: 32px;
+}
+
+.receipt__panel--form {
+  border-right: 1px dashed var(--line);
+}
+
+.panel-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin: 0 0 20px;
+}
+
+/* ---- Form ---- */
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field__label {
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}
+
+.field input {
+  font-family: var(--font-mono);
+  font-size: 1.05rem;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.field input:focus-visible {
+  outline: 2px solid var(--bill-green-bright);
+  outline-offset: 1px;
+}
+
+.btn {
+  margin-top: 8px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 3px;
+  background: var(--bill-green);
+  color: var(--paper-raised);
+  cursor: pointer;
+  transition: background-color 0.15s ease, transform 0.1s ease;
+}
+
+.btn:hover:not(:disabled) {
+  background: var(--bill-green-bright);
+}
+
+.btn:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.error {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--error);
+  margin: 0;
+}
+
+/* ---- Result / ticket ---- */
+
+.empty-state {
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.ticket {
+  font-family: var(--font-mono);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ticket__row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 0.95rem;
+}
+
+.ticket__row span:first-child {
+  color: var(--ink-soft);
+}
+
+.ticket__row span:last-child {
+  font-weight: 600;
+}
+
+.ticket__divider {
+  border-top: 1px dashed var(--line);
+  margin: 2px 0;
+}
+
+.ticket__row--total {
+  font-size: 1.2rem;
+  padding-top: 4px;
+}
+
+.ticket__row--total span:first-child {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.ticket__row--total span:last-child {
+  color: var(--bill-green);
+  font-weight: 700;
+}
+
+/* ---- Footer ---- */
+
+.footnote {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--ink-soft);
+  text-align: center;
+}
+
+.footnote code {
+  color: var(--bill-green);
+}
+
+/* ---- Responsive ---- */
+
+@media (max-width: 640px) {
+  .receipt {
+    grid-template-columns: 1fr;
+  }
+
+  .receipt__panel--form {
+    border-right: none;
+    border-bottom: 1px dashed var(--line);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn {
+    transition: none;
+  }
+}
