@@ -30,22 +30,22 @@ Demo para clase de CI/CD: una app simple de **liquidación de sueldos**, dividid
 Con UV:  
 ```bash
 cd backend
-uv syncpip install -r requirements.txt
+uv sync
 uv run uvicorn app.main:app --reload --port 8000
 ```
 
 Con pip:  
 ```bash
 cd backend
-pip install -r requirements.txt
-uvicorn app.main:app --reload --port 8000
+python -m pip install -r requirements.txt
+python -m uvicorn app.main:app --reload --port 8000
 ```
 
 Tests (habiendo cargado el entorno):
 
 ```bash
 cd backend
-pytest tests/ -v
+uv run pytest tests/ -v
 ```
 
 ### Frontend
